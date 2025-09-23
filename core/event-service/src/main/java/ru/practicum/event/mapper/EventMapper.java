@@ -71,12 +71,10 @@ public class EventMapper {
     }
 
     private static Location mapLocationDtoToLocation(LocationDto locationDto) {
-        Location location = new Location(null, locationDto.getLat(), locationDto.getLon());
-        return  location;
+        return new Location(null, locationDto.getLat(), locationDto.getLon());
     }
 
     private static LocationDto mapLocationToLocationDto(Location location) {
-        LocationDto locationDto = new LocationDto(location.getLat(), location.getLon());
-        return  locationDto;
+        return new LocationDto(location.getLat(), location.getLon());
     }
 }

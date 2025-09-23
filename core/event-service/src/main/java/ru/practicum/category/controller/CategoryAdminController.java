@@ -30,7 +30,7 @@ public class CategoryAdminController {
     @DeleteMapping("/{catId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@Valid @PathVariable Long catId) {
-        log.info("DELETE запрос на удаление админом категории с id {}", catId, catId);
+        log.info("DELETE запрос на удаление админом категории с id {}", catId);
         categoryService.deleteById(catId);
     }
 
@@ -39,8 +39,7 @@ public class CategoryAdminController {
             @PathVariable Long catId,
             @RequestBody @Valid CategoryUpdateDto dto
     ) {
-        log.info("PATCH запрос по на обновление админом категории с id {}", catId,
-                catId);
+        log.info("PATCH запрос по на обновление админом категории с id {}", catId);
         return categoryService.update(catId, dto);
     }
 }

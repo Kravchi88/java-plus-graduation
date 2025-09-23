@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.request.ParticipationRequestDto;
-import ru.practicum.request.dto.EventRequestStatusUpdateRequest;
+import ru.practicum.dto.request.EventRequestStatusUpdateRequest;
 import ru.practicum.request.service.RequestService;
 
 import java.util.List;

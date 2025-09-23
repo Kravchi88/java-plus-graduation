@@ -13,7 +13,7 @@ import ru.practicum.dto.request.ParticipationRequestDto;
 import ru.practicum.dto.request.RequestStatus;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.exception.ValidationException;
-import ru.practicum.request.dto.EventRequestStatusUpdateRequest;
+import ru.practicum.dto.request.EventRequestStatusUpdateRequest;
 import ru.practicum.request.mapper.RequestMapper;
 import ru.practicum.request.model.Request;
 import ru.practicum.request.model.RequestStatusEntity;
@@ -85,8 +85,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return userApi.getUserById(userId).getId();
         } catch (FeignException e) {
-            new NotFoundException("Не найден пользователя с ID: " + userId);
-            return null;
+            throw new NotFoundException("Не найден пользователя с ID: " + userId);
         }
     }
 
@@ -94,8 +93,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return eventApi.getEventFullDtoById(eventId);
         } catch (FeignException e) {
-            new NotFoundException("Не найдено событие с ID: " + eventId);
-            return null;
+            throw new NotFoundException("Не найдено событие с ID: " + eventId);
         }
     }
 

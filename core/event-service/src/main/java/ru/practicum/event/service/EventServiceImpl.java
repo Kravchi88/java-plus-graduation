@@ -245,8 +245,7 @@ public class EventServiceImpl implements EventService {
             return userApi.getUserById(userId).getId();
         } catch (FeignException e) {
             log.error(e.toString());
-            new NotFoundException("Не найден пользователя с ID: " + userId);
-            return null;
+            throw new NotFoundException("Не найден пользователя с ID: " + userId);
         }
     }
 

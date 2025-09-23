@@ -44,7 +44,6 @@ public class CommentServiceImpl implements CommentService {
         return findCommentsByAuthorAndEvent(initiator, eventFullDto.getId(), pageRequest);
     }
 
-    @Transactional(readOnly = true)
     private List<CommentResponseDto> findCommentsByAuthorAndEvent(Long authorId, Long eventId, PageRequest pageRequest) {
         List<Comment> comments = commentRepository.findByAuthorAndEventId(authorId, eventId, pageRequest);
         return comments.stream().map(CommentMapper::toCommentResponseDto).toList();
@@ -62,7 +61,6 @@ public class CommentServiceImpl implements CommentService {
         return saveComment(commentRequestDto, initiator, event.getId());
     }
 
-    @Transactional
     private CommentResponseDto saveComment(CommentRequestDto dto, Long author, Long eventId) {
         Comment comment = commentRepository.save(CommentMapper.toComment(dto, author, eventId));
         return CommentMapper.toCommentResponseDto(comment);
@@ -74,7 +72,6 @@ public class CommentServiceImpl implements CommentService {
         return updateComment(commentRequestDto, userId, commentId);
     }
 
-    @Transactional
     private CommentResponseDto updateComment(CommentRequestDto dto, Long userId, Long commentId) {
         Comment comment = getCommentById(commentId);
 
@@ -123,7 +120,6 @@ public class CommentServiceImpl implements CommentService {
         log.info("Все комментарии у события с id = {} успешно удалены", eventId);
     }
 
-    @Transactional
     void deleteCommentsByEvent(Long eventId) {
         commentRepository.deleteByEventId(eventId);
         log.info("Все комментарии у события с id = {} успешно удалены", eventId);
@@ -136,7 +132,6 @@ public class CommentServiceImpl implements CommentService {
         return findCommentsByEvent(eventFullDto.getId(), pageRequest);
     }
 
-    @Transactional(readOnly = true)
     List<CommentResponseDto> findCommentsByEvent(Long eventId, PageRequest pageRequest) {
         List<Comment> comments = commentRepository.findByEventId(eventId, pageRequest);
         log.info("Получены все комментарии события с id = {}", eventId);
