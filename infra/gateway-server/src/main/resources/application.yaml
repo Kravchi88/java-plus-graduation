@@ -12,6 +12,8 @@ spring:
       retry:
         useRandomPolicy: true
         max-interval: 6000
+server:
+  port: 8080
 eureka:
   instance:
     preferIpAddress: true
